@@ -1,0 +1,27 @@
+This document will outline the functions and order of the cyanogenmod builder script. 
+
+
+
+I. Set up environment.
+
+if adb is found in ~/  <(user dir) then add it as a variable to use, otherwise use included adb file
+    Or wget adb from server to keep the script as a one file script
+
+
+
+
+2. Download Source/Sync already downloaded Source
+
+
+
+
+
+3. Set up device.
+
+
+
+
+
+4. Build
+
+
