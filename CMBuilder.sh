@@ -74,7 +74,7 @@ installjava() {
 
 # Download with progress bar
 dl() {
-	sudo wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
+	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
 }
 
 # Check to see if repo is installed
@@ -90,7 +90,7 @@ checkrepo() {
 		mkdir ~/bin
 		cd ~/bin
 		dl http://android.git.kernel.org/repo
-		sudo chmod a+x repo
+		chmod a+x repo
 		cd $PWDD
 		echo Repo Installed.
 		export PATH=$PATH:~/bin
@@ -155,12 +155,12 @@ DownS() {
 		cd $PWDD/Source
 	
 #Set up directory for Sync with Cyanogen's github.
-		sudo repo init -u git://github.com/cyanogen/android.git -b froyo
+		repo init -u git://github.com/cyanogen/android.git -b froyo
 		Source=1
 	done
 	
 #Sync with Cyanogen's github.
-	sudo repo sync
+	repo sync
 	cd ..
 	mainmenu
 }
@@ -168,8 +168,8 @@ DownS() {
 # Extract proprietary bits
 startextract() {
 	cd $PWDD/Source
-	sudo mkdir vendor
-	sudo chmod 777 -R vendor
+	mkdir vendor
+	chmod 777 -R vendor
 	cd $PWDD/Source/$extract
 	./extract-files.sh
 	cd $PWDD
@@ -224,7 +224,7 @@ Droid() {
 
 #Grab and setup device
 setupdevice() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n        Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
 	case $device in
 	 	"Dream/Sapphire")dream;;
 	 	"Nexus One")N1;;
@@ -270,7 +270,7 @@ makeit() {
 	lunch $lunch
 
 #Make (into a zip)
-	sudo make otapackage -j$cores
+	make otapackage -j$cores
 	mainmenu
 
 }
@@ -278,7 +278,7 @@ makeit() {
 
 makeclean() {
 	cd $PWDD/Source
-	sudo make clean
+	make clean
 	mainmenu
 }
 
