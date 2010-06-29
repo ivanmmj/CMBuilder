@@ -8,21 +8,21 @@ if adb is found in ~/  <(user dir) then add it as a variable to use, otherwise w
 
 Bring down the "required" files to only the truly needed ones.
 
-   Remove all unneeded Sudo
+   Remove all unneeded Sudo - Done
 
 
 
 
 2. Download Source/Sync already downloaded Source
 Should we add multiple trees? Froyo, Eclair, Donut, etc? Is it worth it?
-
+Does anyone really want the older trees?
 
 
 
 3. Set up device.
 Set up more devices?
 Add JIT for each device?
-
+Or should we wait to see if Cyan will enable this automatically?
 
 
 
