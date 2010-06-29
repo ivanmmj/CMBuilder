@@ -74,7 +74,7 @@ installjava() {
 
 # Download with progress bar
 dl() {
-	sudo wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
+	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
 }
 
 # Check to see if repo is installed
@@ -90,7 +90,7 @@ checkrepo() {
 		mkdir ~/bin
 		cd ~/bin
 		dl http://android.git.kernel.org/repo
-		sudo chmod a+x repo
+		chmod a+x repo
 		cd $PWDD
 		echo Repo Installed.
 		export PATH=$PATH:~/bin
@@ -168,8 +168,8 @@ DownS() {
 # Extract proprietary bits
 startextract() {
 	cd $PWDD/Source
-	sudo mkdir vendor
-	sudo chmod 777 -R vendor
+	mkdir vendor
+	chmod 777 -R vendor
 	cd $PWDD/Source/$extract
 	./extract-files.sh
 	cd $PWDD
@@ -270,7 +270,7 @@ makeit() {
 	lunch $lunch
 
 #Make (into a zip)
-	sudo make otapackage -j$cores
+	make otapackage -j$cores
 	mainmenu
 
 }
@@ -278,7 +278,7 @@ makeit() {
 
 makeclean() {
 	cd $PWDD/Source
-	sudo make clean
+	make clean
 	mainmenu
 }
 
