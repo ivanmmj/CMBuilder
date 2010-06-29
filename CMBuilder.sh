@@ -98,8 +98,13 @@ checkrepo() {
 }
 
 
-
-
+checkadb() {
+	adbfound=0
+	find -name adb | grep "tools"
+	if [ $? -eq 0 ]
+		then
+		export PATH={$PATH:`find -name adb | grep "tools"`} 
+	fi
 required() {
 	checkrepo
 	
@@ -146,7 +151,7 @@ DownS() {
 		echo "Source not found."
 		Source=0
 	fi
-
+}
 #If source does not exist...
 	while [ $Source -lt 1 ]; do
 
@@ -284,7 +289,7 @@ makeclean() {
 
 
 mainmenu() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" False "Download/Update Source" False "Setup 	Device Configuration" False "Build" False "Make Clean" False "Exit"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" False "Download/Update Source" False "Setup Device Configuration" False "Build" False "Make Clean" False "Exit"`
 		case $device in
 		 	"Setup required files")required;;
 		 	"Download/Update Source")DownS;;
