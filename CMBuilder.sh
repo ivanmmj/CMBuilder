@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#last edit June 28th 2010 8pm
+
 DATE=`date +"%Y%m%d"`
 VERSION="v2-beta"
 export PATH=$PATH:~/bin
