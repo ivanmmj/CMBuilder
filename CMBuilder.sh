@@ -155,12 +155,12 @@ DownS() {
 		cd $PWDD/Source
 	
 #Set up directory for Sync with Cyanogen's github.
-		sudo repo init -u git://github.com/cyanogen/android.git -b froyo
+		repo init -u git://github.com/cyanogen/android.git -b froyo
 		Source=1
 	done
 	
 #Sync with Cyanogen's github.
-	sudo repo sync
+	repo sync
 	cd ..
 	mainmenu
 }
@@ -224,7 +224,7 @@ Droid() {
 
 #Grab and setup device
 setupdevice() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n        Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
 	case $device in
 	 	"Dream/Sapphire")dream;;
 	 	"Nexus One")N1;;
