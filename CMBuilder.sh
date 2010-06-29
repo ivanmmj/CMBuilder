@@ -111,7 +111,7 @@ required() {
 	if [ $bit = 64 ]; then
 		echo "64bit OS installed."
 		echo "Installing required files..."
-		sudo apt-get install ia32-libs  g++-multilib gcc-multilib lib32z1-	dev lib32ncurses5-dev libc6-dev-i386 x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev
+		sudo apt-get install ia32-libs  g++-multilib gcc-multilib lib32z1-dev lib32ncurses5-dev libc6-dev-i386 x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev
 	else
 		echo "32bit OS installed."
 		echo "Nothing else is required."
@@ -224,7 +224,7 @@ Droid() {
 
 #Grab and setup device
 setupdevice() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n        Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
 	case $device in
 	 	"Dream/Sapphire")dream;;
 	 	"Nexus One")N1;;
