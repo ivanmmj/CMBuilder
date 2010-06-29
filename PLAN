@@ -11,17 +11,19 @@ if adb is found in ~/  <(user dir) then add it as a variable to use, otherwise u
 
 
 2. Download Source/Sync already downloaded Source
-
-
+    sudo really isnt needed, as we are not changing any root owned files.
+        Remove all unneeded Sudo
 
 
 
 3. Set up device.
-
-
+Do we need to make our own buildspec.mk or is Lunch enough?
+    lunch should be find by itself.
 
 
 
 4. Build
+
+
 
 
