@@ -2,8 +2,7 @@
 
 #last edit June 28th 2010 8pm
 
-DATE=`date +"%Y%m%d"`
-VERSION="v2-beta"
+VERSION="v2.1-alpha"
 export PATH=$PATH:~/bin
 
 # Get Working Directory
@@ -47,7 +46,6 @@ checkverjava() {
 		echo "Required version of Java found."
 	else
 		installjava
-		sudo update-java-alternatives -s java-6-sun
 	fi
 
 }
@@ -203,7 +201,7 @@ cd $PWDD/Source
 n1() {
 	cd $PWDD/Source
 	. build/envsetup.sh
-	lunch 4
+	lunch 6
 	echo TARGET_PRODUCT:=full_passion > buildspec.mk
 	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
 	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
@@ -216,7 +214,7 @@ n1() {
 Droid() {
 	cd $PWDD/Source
 	. build/envsetup.sh
-	lunch 6
+	lunch 8
 	echo TARGET_PRODUCT:=generic_sholes > buildspec.mk
 	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
 	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
