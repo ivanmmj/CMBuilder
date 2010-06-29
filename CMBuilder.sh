@@ -278,6 +278,32 @@ makeit() {
 
 }
 
+advanced() {
+	advancedopt=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Force JIT" False "Make Clean" True "Back to Main Menu"`
+		case $advancedopt in
+			"Force JIT")jit;;
+			"Make Clean")makeclean;;
+			"Back to Main Menu")mainmenu;;
+		esac
+}
+
+
+
+
+
+
+
+
+
+
+
+# Check to see if JIT if forced. If not, Force.
+jit() {
+
+advanced
+}
+
+
 
 makeclean() {
 	cd $PWDD/Source
@@ -287,13 +313,13 @@ makeclean() {
 
 
 mainmenu() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" False "Download/Update Source" False "Setup Device Configuration" False "Build" False "Make Clean" False "Exit"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" True "Download/Update Source" False "Setup Device Configuration" False "Build" False "Advanced Functions" False "Exit"`
 		case $device in
 		 	"Setup required files")required;;
 		 	"Download/Update Source")DownS;;
 			"Setup Device Configuration")device;;
 		 	"Build")makeit;;
-			"Make Clean")makeclean;;
+			"Advanced Functions")advanced;;
 			"Exit")exit;;
 		esac
 }
