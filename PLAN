@@ -12,20 +12,28 @@ Bring down the "required" files to only the truly needed ones.
 
 
 
-
 2. Download Source/Sync already downloaded Source
+sudo really isnt needed, as we are not changing any root owned files.
+        Remove all unneeded Sudo
 Should we add multiple trees? Froyo, Eclair, Donut, etc? Is it worth it?
 Does anyone really want the older trees?
 
 
 
-3. Set up device.
+
+3. Set up more devices?
 Set up more devices?
 Add JIT for each device?
 Or should we wait to see if Cyan will enable this automatically?
 
+Do we need to make our own buildspec.mk or is Lunch enough?
+    lunch should be find by itself.
+
+Add JIT for each device?
 
 
 4. Build
+
+
 
 
