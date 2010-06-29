@@ -103,9 +103,10 @@ checkadb() {
 		then
 		export PATH={$PATH:`find -name adb | grep "tools"`} 
 	fi
+}
+
 required() {
-	checkrepo
-	
+	checkrepo	
 # Install all required "32-bit system" files.
 	sudo apt-get install git-core gnupg flex bison gperf libsdl-dev libesd0-dev libwxgtk2.6-dev build-essential zip curl libncurses5-dev zlib1g-dev
 
@@ -138,29 +139,16 @@ required() {
 
 
 DownS() {
-	#Check to see if directory already exists and thus is already synced.
-	cd $PWDD
-	if [ -e Source ]
+	#Check to see if directory has files and thus has already being init.
+	cd $PWDD/Source
+	if [ $(ls -1A | wc -l) -eq 0 ]
 		then
-		echo "Preexisting Source found. Ready to sync."
-		Source=1
-		cd Source
-	else
-		echo "Source not found."
-		Source=0
-	fi
-}
-#If source does not exist...
-	while [ $Source -lt 1 ]; do
-
-#Make and enter directory for source.
-		mkdir $PWDD/Source
-		cd $PWDD/Source
-	
-#Set up directory for Sync with Cyanogen's github.
+		echo "Source directory empty."
 		repo init -u git://github.com/cyanogen/android.git -b froyo
-		Source=1
-	done
+	else
+		echo "Preexisting Source found. Ready to sync."
+	fi
+
 	
 #Sync with Cyanogen's github.
 	repo sync
