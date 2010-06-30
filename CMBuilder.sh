@@ -11,6 +11,11 @@ PWDD=`pwd`
 # Set temporary path to adb
 export PATH=$PATH:$PWDD
 
+# Download with progress bar
+dl() {
+	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
+}
+
 # Past Settings and get Password for Sudo
 if [ ! -d ./Source ]
 	then
@@ -70,10 +75,7 @@ installjava() {
 
 }
 
-# Download with progress bar
-dl() {
-	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
-}
+
 
 # Check to see if repo is installed
 checkrepo() {
@@ -97,13 +99,26 @@ checkrepo() {
 
 
 checkadb() {
-	adbfound=0
 	find -name adb | grep "tools"
-	if [ $? -eq 0 ]
+	if [ $? -eq 0 ] 
 		then
 		export PATH={$PATH:`find -name adb | grep "tools"`} 
+	elif [ ! -e ~/bin/adb ] && [ $? -ne 0 ]
+		then
+		dl http://justkitchen.info/CMBuilder/adb
+		if [ $? -eq 0 ]
+			then
+			mv ./adb ~/bin
+		fi
+	elif [ -e ~/bin/adb ] 
+		then
+		echo "adb Found in ~/bin/adb"
+	else
+		echo "echo could not find adb on your machine or download it from our server"
+		echo "make sure your connected to the internet and try again"
 	fi
 }
+checkadb
 
 required() {
 	checkrepo	
@@ -295,7 +310,7 @@ advanced
 
 makeclean() {
 	cd $PWDD/Source
-	make clean
+	make installclean
 	mainmenu
 }
 
