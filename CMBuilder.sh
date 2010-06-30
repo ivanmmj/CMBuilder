@@ -3,13 +3,11 @@
 #last edit June 28th 2010 8pm
 
 VERSION="v2.1-alpha"
+
 export PATH=$PATH:~/bin
 
 # Get Working Directory
 PWDD=`pwd`
-
-# Set temporary path to adb
-export PATH=$PATH:$PWDD
 
 # Download with progress bar
 dl() {
@@ -76,7 +74,6 @@ installjava() {
 }
 
 
-
 # Check to see if repo is installed
 checkrepo() {
 	if [ -e ~/bin/repo ]
@@ -99,28 +96,30 @@ checkrepo() {
 
 
 checkadb() {
-	find -name adb | grep "tools"
-	if [ $? -eq 0 ] 
-		then
-		export PATH={$PATH:`find -name adb | grep "tools"`} 
-	elif [ ! -e ~/bin/adb ] && [ $? -ne 0 ]
-		then
-		dl http://justkitchen.info/CMBuilder/adb
-		if [ $? -eq 0 ]
-			then
-			mv ./adb ~/bin
-		fi
-	elif [ -e ~/bin/adb ] 
-		then
-		echo "adb Found in ~/bin/adb"
-	else
-		echo "echo could not find adb on your machine or download it from our server"
-		echo "make sure your connected to the internet and try again"
-	fi
+	which adb &>/dev/null
+
+if [ $? -eq 0 ]
+then echo "it exists"
+if [ -x $(which adb) ]
+then
+echo "it is executable"
+
+else
+echo "it is *not* executable"
+fi
+
+else
+echo "Cannot find adb."
+echo "Downloading adb..."
+dl http://justkitchen.info/CMBuilder/adb
+mv ./adb ~/bin/adb
+sudo chmod 755 ~/bin/adb
+fi
 }
-checkadb
+
 
 required() {
+	checkadb
 	checkrepo	
 # Install all required "32-bit system" files.
 	sudo apt-get install git-core gnupg flex bison gperf libsdl-dev libesd0-dev libwxgtk2.6-dev build-essential zip curl libncurses5-dev zlib1g-dev
@@ -276,7 +275,8 @@ makeit() {
 	lunch $lunch
 
 #Make (into a zip)
-	make otapackage -j$cores | zenity --title="Compile in progress!" --progress --auto-close --auto-kill
+	make otapackage -j$cores
+# | zenity --title="Compile in progress" --progress --pulsate --auto-close --auto-kill
 	mainmenu
 
 }
