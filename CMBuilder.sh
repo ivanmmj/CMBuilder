@@ -261,7 +261,7 @@ makeit() {
 	lunch $lunch
 
 #Make (into a zip)
-	make otapackage -j$cores
+	make otapackage -j$cores | zenity --title="Compile in progress!" --progress --auto-close --auto-kill
 	mainmenu
 
 }
