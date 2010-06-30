@@ -1,1 +1,6 @@
-v2      Initial push
+Version 2
+Initial push to Github
+Rewrote from scratch and added zenity based GUI.
+
+Version 1
+A single script that will set up your computer to be able to sync and compile Cyanogen's Android.
