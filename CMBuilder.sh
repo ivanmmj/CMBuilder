@@ -286,7 +286,7 @@ SoDir
 	lunch $lunch
 
 #Make (into a zip)
-	make otapackage -j$cores
+	make otapackage -j$cores | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
 # | zenity --title="Compile in progress" --progress --pulsate --auto-close --auto-kill
 	mainmenu
 
