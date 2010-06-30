@@ -1,13 +1,19 @@
 #!/bin/bash
 
-#last edit June 28th 2010 8pm
-
 VERSION="v2.1-alpha"
 
+
+# Export to PATH
 export PATH=$PATH:~/bin
 
 # Get Working Directory
 PWDD=`pwd`
+
+
+#########################################################
+#			Functions			#
+#########################################################
+
 
 # Download with progress bar
 dl() {
@@ -35,9 +41,15 @@ else
 fi
 
 
-#########################################################
-#			Functions			#
-#########################################################
+
+
+# Go to Source directory
+SoDir() {
+cd $PWDD/Source
+}
+
+
+
 
 # Check Java Version
 checkverjava() {
@@ -154,7 +166,7 @@ required() {
 
 DownS() {
 	#Check to see if directory has files and thus has already being init.
-	cd $PWDD/Source
+	SoDir
 	if [ $(ls -1A | wc -l) -eq 0 ]
 		then
 		echo "Source directory empty."
@@ -172,13 +184,12 @@ DownS() {
 
 # Extract proprietary bits
 startextract() {
-	cd $PWDD/Source
+	SoDir
 	mkdir vendor
 	chmod 777 -R vendor
-	cd $PWDD/Source/$extract
+	cd $extract
 	./extract-files.sh
-	cd $PWDD
-	cd Source
+	SoDir
 	mainmenu
 }
 
@@ -187,7 +198,7 @@ startextract() {
 
 # 32b Devices Setup
 dream() {
-cd $PWDD/Source
+	SoDir
 	. build/envsetup.sh
 	lunch 13
 	echo TARGET_PRODUCT:=full_dream > buildspec.mk
@@ -201,7 +212,7 @@ cd $PWDD/Source
 
 # N1 Devices Setup
 n1() {
-	cd $PWDD/Source
+	SoDir
 	. build/envsetup.sh
 	lunch 9
 	echo TARGET_PRODUCT:=full_passion > buildspec.mk
@@ -214,7 +225,7 @@ n1() {
 
 # Droid Devices Setup
 Droid() {
-	cd $PWDD/Source
+	SoDir
 	. build/envsetup.sh
 	lunch 12
 	echo TARGET_PRODUCT:=generic_sholes > buildspec.mk
@@ -260,7 +271,7 @@ fi
 
 makeit() {
 
-	cd $PWDD/Source
+SoDir
 
 # Find out how many CPU cores you have
 	cores=`grep -c processor /proc/cpuinfo`
@@ -309,7 +320,7 @@ advanced
 
 
 makeclean() {
-	cd $PWDD/Source
+	SoDir
 	make installclean
 	mainmenu
 }
