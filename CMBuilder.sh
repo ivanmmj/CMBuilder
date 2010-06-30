@@ -190,12 +190,12 @@ startextract() {
 dream() {
 cd $PWDD/Source
 	. build/envsetup.sh
-	lunch 3
+	lunch 13
 	echo TARGET_PRODUCT:=full_dream > buildspec.mk
 	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
 	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
 	echo "WITH_JIT:=true" >> buildspec.mk
-	echo lunch=3 > devicelunch
+	echo lunch=13 > devicelunch
 	extract=device/htc/dream
 	startextract
 }
@@ -204,11 +204,11 @@ cd $PWDD/Source
 n1() {
 	cd $PWDD/Source
 	. build/envsetup.sh
-	lunch 6
+	lunch 9
 	echo TARGET_PRODUCT:=full_passion > buildspec.mk
 	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
 	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
-	echo lunch=4 > devicelunch
+	echo lunch=9 > devicelunch
 	extract=device/htc/passion
 	startextract
 }
@@ -217,11 +217,11 @@ n1() {
 Droid() {
 	cd $PWDD/Source
 	. build/envsetup.sh
-	lunch 8
+	lunch 12
 	echo TARGET_PRODUCT:=generic_sholes > buildspec.mk
 	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
 	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
-	echo lunch=6 > devicelunch
+	echo lunch=12 > devicelunch
 	extract=device/motorola/sholes
 	startextract
 }
