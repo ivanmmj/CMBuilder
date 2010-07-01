@@ -245,7 +245,7 @@ Droid() {
 
 
 #Grab and setup device
-setupdevice() {
+device() {
 	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
 	case $device in
 	 	"Dream/Sapphire")dream;;
@@ -256,22 +256,7 @@ setupdevice() {
 
 
 
-# Set up your device's vendor tree.
-device() {
 
-# Check to see if Source already configured to a device.
-if [ -e Source/buildspec.mk ]
-	then
-	echo "Device found."
-	mainmenu
-else
-	setupdevice
-	mainmenu
-fi
-
-
-
-}
 
 
 
