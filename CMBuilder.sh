@@ -78,7 +78,7 @@ checkubuntu() {
 	if [ $DISTRIB_RELEASE = $currentubu ]; then
 		echo Ubuntu 10.04 found. Adding required repository.
 		sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
-		sudo update
+		sudo apt-get update
 	else
 		echo "At the moment, the auto installer only supports Ubuntu 10.04."
 fi
