@@ -291,12 +291,37 @@ SoDir
 
 }
 
+makeitsingle() {
+
+SoDir
+
+# Set Java version if installed before make
+	sudo update-java-alternatives -s java-6-sun
+
+#Prepare environment
+	. build/envsetup.sh
+	lunch $lunch
+
+#Make (into a zip)
+	make otapackage | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
+	mainmenu
+
+}
+
+
+
+
+
+
+
+
 advanced() {
-	advancedopt=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Force JIT" False "Make Clean" True "Back to Main Menu"`
+	advancedopt=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Force JIT" False "Make Clean" False "Make [Force Single Core]" True "Back to Main Menu"`
 		case $advancedopt in
 			"Force JIT")jit;;
 			"Make Clean")makeclean;;
 			"Back to Main Menu")mainmenu;;
+			"Make [Force Single Core]")makeitsingle;;
 		esac
 }
 
