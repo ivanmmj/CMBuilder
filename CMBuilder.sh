@@ -178,7 +178,15 @@ DownS() {
 	
 #Sync with Cyanogen's github.
 	repo sync
-	cd ..
+	SoDir
+if [ -e vendor/cyanogen/proprietary/RomManager.apk ]
+	then
+	echo "RomManager found."
+	else
+	echo "RomManager not found."
+	echo "Downloading RomManager..."
+	cd $PWDD/Source/vendor/cyanogen
+	./get-rommanager
 	mainmenu
 }
 
@@ -200,12 +208,8 @@ startextract() {
 dream() {
 	SoDir
 	. build/envsetup.sh
-	lunch 13
-	echo TARGET_PRODUCT:=full_dream > buildspec.mk
-	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
-	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
-	echo "WITH_JIT:=true" >> buildspec.mk
-	echo lunch=13 > devicelunch
+	lunch 16
+	echo lunch=16 > devicelunch
 	extract=device/htc/dream
 	startextract
 }
@@ -214,11 +218,8 @@ dream() {
 n1() {
 	SoDir
 	. build/envsetup.sh
-	lunch 9
-	echo TARGET_PRODUCT:=full_passion > buildspec.mk
-	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
-	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
-	echo lunch=9 > devicelunch
+	lunch 12
+	echo lunch=12 > devicelunch
 	extract=device/htc/passion
 	startextract
 }
@@ -227,11 +228,8 @@ n1() {
 Droid() {
 	SoDir
 	. build/envsetup.sh
-	lunch 12
-	echo TARGET_PRODUCT:=generic_sholes > buildspec.mk
-	echo TARGET_BUILD_VARIANT:=eng >> buildspec.mk
-	echo TARGET_BUILD_TYPE:=release >> buildspec.mk
-	echo lunch=12 > devicelunch
+	lunch 15
+	echo lunch=15 > devicelunch
 	extract=device/motorola/sholes
 	startextract
 }
