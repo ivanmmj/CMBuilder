@@ -29,7 +29,13 @@ if [ $? -ne 0 ]
 	then
 	echo "failed to create the Source directory for an unknown reason"
 fi
-cd Source
+if [ -d ./Source ] 
+	then
+	cd Source
+fi
+if [ ! -d ./Source ]
+	echo "Cannot cd to Source; directory does not exist."
+fi
 if [ -e devicelunch ]
 	then
 	echo "Past settings found."
@@ -125,7 +131,7 @@ echo "Cannot find adb."
 echo "Downloading adb..."
 dl http://justkitchen.info/CMBuilder/adb
 mv ./adb ~/bin/adb
-sudo chmod 755 ~/bin/adb
+chmod 755 ~/bin/adb  #we dont need to sudo chmod adb
 fi
 }
 
