@@ -286,7 +286,7 @@ SoDir
 	lunch $lunch
 
 #Make (into a zip)
-	make otapackage -j$cores | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
+	make bacon -j$cores | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
 	mainmenu
 
 }
@@ -303,7 +303,7 @@ SoDir
 	lunch $lunch
 
 #Make (into a zip)
-	make otapackage | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
+	make bacon | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
 	mainmenu
 
 }
