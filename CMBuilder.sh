@@ -20,7 +20,7 @@ dl() {
 	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
 }
 
-# Past Settings and get Password for Sudo
+# Pull Past Settings
 if [ ! -d ./Source ]
 	then
 	mkdir ./Source
@@ -32,12 +32,12 @@ fi
 cd Source
 if [ -e devicelunch ]
 	then
-	sudo echo "Past settings found."
+	echo "Past settings found."
 	source devicelunch
 	cd $PWDD
 else
 	cd $PWDD
-	sudo echo "Past settings not found."
+	echo "Past settings not found."
 fi
 
 
@@ -287,7 +287,6 @@ SoDir
 
 #Make (into a zip)
 	make otapackage -j$cores | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
-# | zenity --title="Compile in progress" --progress --pulsate --auto-close --auto-kill
 	mainmenu
 
 }
