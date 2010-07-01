@@ -34,6 +34,7 @@ if [ -d ./Source ]
 	cd Source
 fi
 if [ ! -d ./Source ]
+	then
 	echo "Cannot cd to Source; directory does not exist."
 fi
 if [ -e devicelunch ]
@@ -193,6 +194,7 @@ if [ -e vendor/cyanogen/proprietary/RomManager.apk ]
 	echo "Downloading RomManager..."
 	cd $PWDD/Source/vendor/cyanogen
 	./get-rommanager
+fi
 	mainmenu
 }
 
