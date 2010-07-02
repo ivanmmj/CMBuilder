@@ -19,7 +19,7 @@ source scripts/index.sh
 
 
 
-# Pull Past Settings
+# Make sure folder is created. If not, create.
 if [ ! -d ./Source ]
 	then
 	mkdir ./Source
