@@ -2,7 +2,6 @@
 
 VERSION="v2.1-alpha"
 
-
 # Export to PATH
 export PATH=$PATH:~/bin
 
@@ -11,13 +10,6 @@ PWDD=`pwd`
 
 # Set Function Sources
 source scripts/index.sh
-
-
-#########################################################
-#			Functions			#
-#########################################################
-
-
 
 # Make sure folder is created. If not, create.
 if [ ! -d ./Source ]
@@ -39,10 +31,15 @@ fi
 
 
 
+#########################################################
+#			Functions			#
+#########################################################
+
 # Go to Source directory
 SoDir() {
 cd $PWDD/Source
 }
+
 
 # Download with progress bar
 dl() {
