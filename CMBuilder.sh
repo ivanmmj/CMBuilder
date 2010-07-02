@@ -337,6 +337,7 @@ advanced
 makeclean() {
 	SoDir
 	make installclean
+	make clean
 	mainmenu
 }
 
