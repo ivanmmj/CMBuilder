@@ -1,1 +1,1 @@
-source devicelunch
+source scripts/devicelunch

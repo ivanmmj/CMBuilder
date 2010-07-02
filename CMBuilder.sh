@@ -9,16 +9,15 @@ export PATH=$PATH:~/bin
 # Get Working Directory
 PWDD=`pwd`
 
+# Set Function Sources
+source scripts/index.sh
+
 
 #########################################################
 #			Functions			#
 #########################################################
 
 
-# Download with progress bar
-dl() {
-	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
-}
 
 # Pull Past Settings
 if [ ! -d ./Source ]
@@ -32,20 +31,10 @@ fi
 if [ -d ./Source ] 
 	then
 	cd Source
-fi
-if [ ! -d ./Source ]
-	then
+else
 	echo "Cannot cd to Source; directory does not exist."
 fi
-if [ -e devicelunch ]
-	then
-	echo "Past settings found."
-	source devicelunch
-	cd $PWDD
-else
-	cd $PWDD
-	echo "Past settings not found."
-fi
+
 
 
 
@@ -53,6 +42,11 @@ fi
 # Go to Source directory
 SoDir() {
 cd $PWDD/Source
+}
+
+# Download with progress bar
+dl() {
+	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
 }
 
 
@@ -217,7 +211,7 @@ dream() {
 	SoDir
 	. build/envsetup.sh
 	lunch 16
-	echo lunch=16 > devicelunch
+	echo lunch=16 > ../scripts/devicelunch
 	extract=device/htc/dream
 	startextract
 }
@@ -227,7 +221,7 @@ n1() {
 	SoDir
 	. build/envsetup.sh
 	lunch 12
-	echo lunch=12 > devicelunch
+	echo lunch=12 > ../scripts/devicelunch
 	extract=device/htc/passion
 	startextract
 }
@@ -237,7 +231,7 @@ Droid() {
 	SoDir
 	. build/envsetup.sh
 	lunch 15
-	echo lunch=15 > devicelunch
+	echo lunch=15 > ../scripts/devicelunch
 	extract=device/motorola/sholes
 	startextract
 }
