@@ -25,6 +25,7 @@ if [ -d ./Source ]
 	cd Source
 else
 	echo "Cannot cd to Source; directory does not exist."
+	exit
 fi
 
 
@@ -199,12 +200,15 @@ fi
 }
 
 checkdevice() {
-	if [ `adb devices | wc -w` -gt 4 ]
+	if [ `adb devices | wc -w` -gt 4 ] 
 		then
 		echo "Device attatched"
 		DEVICEATTATCHED=1
-	else 
+		sleep 1
+	elif [ `adb shell | wc -w` -eq 4  ] || [ `adb devices| wc -w` -lt 6 ]
+		then
 		echo "Device NOT attatched"
+		sleep 1
 		DEVICEATTATCHED=0
 	fi
 }
