@@ -337,6 +337,7 @@ cleardevice() {
 	SoDir
 	rm devicelunch
 	rm buildspec.mk 
+	export device=0
 	mainmenu
 }
 
