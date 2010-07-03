@@ -2,25 +2,16 @@
 
 VERSION="v2.1-alpha"
 
-
 # Export to PATH
 export PATH=$PATH:~/bin
 
 # Get Working Directory
 PWDD=`pwd`
 
+# Set Function Sources
+source scripts/index.sh
 
-#########################################################
-#			Functions			#
-#########################################################
-
-
-# Download with progress bar
-dl() {
-	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
-}
-
-# Pull Past Settings
+# Make sure folder is created. If not, create.
 if [ ! -d ./Source ]
 	then
 	mkdir ./Source
@@ -32,27 +23,27 @@ fi
 if [ -d ./Source ] 
 	then
 	cd Source
-fi
-if [ ! -d ./Source ]
-	then
+else
 	echo "Cannot cd to Source; directory does not exist."
 fi
-if [ -e devicelunch ]
-	then
-	echo "Past settings found."
-	source devicelunch
-	cd $PWDD
-else
-	cd $PWDD
-	echo "Past settings not found."
-fi
 
 
 
+
+
+#########################################################
+#			Functions			#
+#########################################################
 
 # Go to Source directory
 SoDir() {
 cd $PWDD/Source
+}
+
+
+# Download with progress bar
+dl() {
+	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
 }
 
 
@@ -240,40 +231,10 @@ startextract() {
 
 
 
-# 32b Devices Setup
-dream() {
-	SoDir
-	. build/envsetup.sh
-	lunch 16
-	echo lunch=16 > devicelunch
-	extract=device/htc/dream
-	startextract
-}
-
-# N1 Devices Setup
-n1() {
-	SoDir
-	. build/envsetup.sh
-	lunch 12
-	echo lunch=12 > devicelunch
-	extract=device/htc/passion
-	startextract
-}
-
-# Droid Devices Setup
-Droid() {
-	SoDir
-	. build/envsetup.sh
-	lunch 15
-	echo lunch=15 > devicelunch
-	extract=device/motorola/sholes
-	startextract
-}
-
 
 
 #Grab and setup device
-setupdevice() {
+device() {
 	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
 	case $device in
 	 	"Dream/Sapphire")dream;;
@@ -284,22 +245,7 @@ setupdevice() {
 
 
 
-# Set up your device's vendor tree.
-device() {
 
-# Check to see if Source already configured to a device.
-if [ -e Source/buildspec.mk ]
-	then
-	echo "Device found."
-	mainmenu
-else
-	setupdevice
-	mainmenu
-fi
-
-
-
-}
 
 
 
@@ -387,6 +333,7 @@ cleardevice() {
 makeclean() {
 	SoDir
 	make installclean
+	make clean
 	mainmenu
 }
 
