@@ -2,8 +2,8 @@
 dream() {
 	SoDir
 	. build/envsetup.sh
-	lunch 16
-	echo lunch=16 > ../scripts/devicelunch
+	lunch 17
+	echo lunch=17 > ../scripts/devicelunch
 	extract=device/htc/dream
 	startextract
 }
@@ -22,8 +22,8 @@ n1() {
 Droid() {
 	SoDir
 	. build/envsetup.sh
-	lunch 15
-	echo lunch=15 > ../scripts/devicelunch
+	lunch 16
+	echo lunch=16 > ../scripts/devicelunch
 	extract=device/motorola/sholes
 	startextract
 }
