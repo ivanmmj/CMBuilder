@@ -9,7 +9,14 @@ export PATH=$PATH:~/bin
 PWDD=`pwd`
 
 # Set Function Sources
-source scripts/index.sh
+if [ -e scripts/index.sh ]
+	then
+	source scripts/index.sh
+else
+	echo "cannot find ./scripts/index.sh EXITING..."
+	sleep 1
+	exit
+fi
 
 # Make sure folder is created. If not, create.
 if [ ! -d ./Source ]
