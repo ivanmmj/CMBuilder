@@ -343,7 +343,6 @@ cleardevice() {
 makeclean() {
 	SoDir
 	make installclean
-	make clean
 	mainmenu
 }
 
