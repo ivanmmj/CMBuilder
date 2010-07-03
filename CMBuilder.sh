@@ -120,9 +120,17 @@ checkadb() {
 if [ $? -eq 0 ]
 then echo "it exists"
 if [ -x $(which adb) ]
-then
-echo "it is executable"
-
+	then
+	echo "it is executable"
+	ADBOWNER=
+	if [ `ls -l $(which adb) | grep root` -eq 1 ] 
+		then
+		sudo chown root:root `ls $(which adb)`
+		if [ `ls -l $(which adb) | grep root` -eq 1 ] 
+			then 
+			echo "Chowned adb root:root"
+		fi
+	fi 
 else
 echo "it is *not* executable"
 fi
@@ -132,7 +140,8 @@ echo "Cannot find adb."
 echo "Downloading adb..."
 dl http://justkitchen.info/CMBuilder/adb
 mv ./adb ~/bin/adb
-chmod 755 ~/bin/adb  #we dont need to sudo chmod adb
+chmod 755 ~/bin/adb  
+sudo chown root:root ~/bin/adb
 fi
 }
 
@@ -198,15 +207,34 @@ fi
 	mainmenu
 }
 
+checkdevice() {
+	if [ `adb devices | wc -w` -gt 4 ]
+		then
+		echo "Device attatched"
+		DEVICEATTATCHED=1
+	else 
+		echo "Device NOT attatched"
+		DEVICEATTATCHED=0
+	fi
+}
+	
+
 # Extract proprietary bits
 startextract() {
-	SoDir
-	mkdir vendor
-	chmod 777 -R vendor
-	cd $extract
-	./extract-files.sh
-	SoDir
-	mainmenu
+	checkdevice
+	if [ $DEVICEATTATCHED -eq 1 ]
+		then
+		SoDir
+		mkdir vendor
+		chmod 777 -R vendor
+		cd $extract
+		./extract-files.sh
+		SoDir
+		mainmenu
+	else
+		echo "No Device attatched plug in device and start script again."
+		mainmenu
+	fi
 }
 
 
@@ -326,6 +354,7 @@ advanced() {
 		case $advancedopt in
 			"Force JIT")jit;;
 			"Make Clean")makeclean;;
+			"Clear device configuration")cleardevice;;
 			"Back to Main Menu")mainmenu;;
 			"Make [Force Single Core]")makeitsingle;;
 		esac
@@ -347,6 +376,12 @@ jit() {
 advanced
 }
 
+cleardevice() {
+	SoDir
+	rm devicelunch
+	rm buildspec.mk 
+	mainmenu
+}
 
 
 makeclean() {
@@ -357,11 +392,12 @@ makeclean() {
 
 
 mainmenu() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" True "Download/Update Source" False "Setup Device Configuration" False "Build" False "Advanced Functions" False "Exit"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" True "Download/Update Source" False "Setup Device Configuration" False "Clear Device Configuration" False "Build" False "Advanced Functions" False "Exit"`
 		case $device in
 		 	"Setup required files")required;;
 		 	"Download/Update Source")DownS;;
 			"Setup Device Configuration")device;;
+			"Clear Device Configuration")cleardevice;;
 		 	"Build")makeit;;
 			"Advanced Functions")advanced;;
 			"Exit")exit;;
@@ -381,10 +417,6 @@ mainmenu() {
 
 
 mainmenu
-
-
-
-
 
 
 
