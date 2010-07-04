@@ -112,7 +112,7 @@ checkrepo() {
 	fi
 }
 
-
+# Check so see if adb is already here and executable, if not downlaod, chmod and chown it
 checkadb() {
 	which adb &>/dev/null
 
@@ -246,7 +246,7 @@ startextract() {
 
 #Grab and setup device
 device() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj and jamezelle" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
 	case $device in
 	 	"Dream/Sapphire")dream;;
 	 	"Nexus One")N1;;
@@ -271,6 +271,7 @@ SoDir
 
 # Set Java version if installed before make
 	sudo update-java-alternatives -s java-6-sun
+
 
 #Prepare environment
 	. build/envsetup.sh
