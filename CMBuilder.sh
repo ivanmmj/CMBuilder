@@ -206,6 +206,7 @@ fi
 	mainmenu
 }
 
+#Check to see if device is plugged in and adb is working with the device
 checkdevice() {
 	if [ `adb devices | wc -w` -gt 4 ] 
 		then
@@ -334,6 +335,7 @@ jit() {
 advanced
 }
 
+#Clear device configuration
 cleardevice() {
 	SoDir 
 	export device=0
