@@ -75,12 +75,10 @@ checkverjava() {
 checkubuntu() {
 	source /etc/lsb-release
 	currentubu=10.04
-	if [ $DISTRIB_RELEASE = $currentubu ]; then
-		echo Ubuntu 10.04 found. Adding required repository.
+	if [ $currentubu -ge $DISTRIB_RELEASE ]; then
+		zenity --title "Cyanogen Builder ${VERSION}" --text "The script has found that you are running Ubuntu 10.04 or higher. Press OK to add the lucid repository required to install Java6." --info
 		sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
 		sudo apt-get update
-	else
-		echo "At the moment, the auto installer only supports Ubuntu 10.04."
 fi
 }
 
