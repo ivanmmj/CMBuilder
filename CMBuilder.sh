@@ -112,7 +112,7 @@ checkrepo() {
 	fi
 }
 
-
+# Check to see if adb is alrady here and executable, if not downaload, chmod and chown it
 checkadb() {
 	which adb &>/dev/null
 
