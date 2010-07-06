@@ -112,7 +112,7 @@ checkrepo() {
 	fi
 }
 
-# Check so see if adb is already here and executable, if not downlaod, chmod and chown it
+
 checkadb() {
 	which adb &>/dev/null
 
@@ -185,7 +185,7 @@ DownS() {
 	if [ $(ls -1A | wc -l) -eq 0 ]
 		then
 		echo "Source directory empty."
-		repo init -u git://github.com/cyanogen/android.git -b froyo
+		repo init -u git://github.com/CyanogenMod/android.git -b froyo
 	else
 		echo "Preexisting Source found. Ready to sync."
 	fi
@@ -206,7 +206,6 @@ fi
 	mainmenu
 }
 
-#Check to see if device is plugged in and adb is working with the device
 checkdevice() {
 	if [ `adb devices | wc -w` -gt 4 ] 
 		then
@@ -247,7 +246,7 @@ startextract() {
 
 #Grab and setup device
 device() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj and jamezelle" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
 	case $device in
 	 	"Dream/Sapphire")dream;;
 	 	"Nexus One")N1;;
@@ -272,7 +271,6 @@ SoDir
 
 # Set Java version if installed before make
 	sudo update-java-alternatives -s java-6-sun
-
 
 #Prepare environment
 	. build/envsetup.sh
@@ -335,7 +333,6 @@ jit() {
 advanced
 }
 
-#Clear device configuration
 cleardevice() {
 	SoDir 
 	export device=0
