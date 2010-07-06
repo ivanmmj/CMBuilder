@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# This script was created by ivanmmj and improved by ivanmmj and jamezelle of xda-developers.com.
+# It is a joint effort in making our lives easier, one script at a time...
+
+# Current Contributers:
+# ivanmmj of xda-developers.com
+# jamezelle of xda-developers.com
+
 VERSION="v2.1-alpha"
 
 # Export to PATH
@@ -48,14 +55,14 @@ SoDir() {
 cd $PWDD/Source
 }
 
+#########################################################
 
 # Download with progress bar
 dl() {
 	wget --progress=bar:force "$1" 2>&1 | zenity --title="File transfer in progress!" --progress --auto-close --auto-kill
 }
 
-
-
+#########################################################
 
 # Check Java Version
 checkverjava() {
@@ -71,6 +78,8 @@ checkverjava() {
 
 }
 
+#########################################################
+
 # Check Ubuntu Version
 checkubuntu() {
 	source /etc/lsb-release
@@ -82,13 +91,15 @@ checkubuntu() {
 fi
 }
 
+#########################################################
+
 # Install Java
 installjava() {
 	checkubuntu
 	sudo apt-get install sun-java6-jdk
-
 }
 
+#########################################################
 
 # Check to see if repo is installed
 checkrepo() {
@@ -109,6 +120,8 @@ checkrepo() {
 		export PATH=$PATH:~/bin
 	fi
 }
+
+#########################################################
 
 # Check to see if adb is alrady here and executable, if not downaload, chmod and chown it
 checkadb() {
@@ -142,6 +155,7 @@ sudo chown root:root ~/bin/adb
 fi
 }
 
+#########################################################
 
 required() {
 	checkadb
@@ -176,7 +190,9 @@ required() {
 
 }
 
+#########################################################
 
+# Set up and download source. If source already synced, sync to the newest version.
 DownS() {
 	#Check to see if directory has files and thus has already being init.
 	SoDir
@@ -204,6 +220,9 @@ fi
 	mainmenu
 }
 
+#########################################################
+
+# Check if device is plugged in.
 checkdevice() {
 	if [ `adb devices | wc -w` -gt 4 ] 
 		then
@@ -218,6 +237,7 @@ checkdevice() {
 	fi
 }
 	
+#########################################################
 
 # Extract proprietary bits
 startextract() {
@@ -237,10 +257,7 @@ startextract() {
 	fi
 }
 
-
-
-
-
+#########################################################
 
 #Grab and setup device
 device() {
@@ -252,11 +269,7 @@ device() {
 	esac
 }
 
-
-
-
-
-
+#########################################################
 
 makeit() {
 
@@ -280,6 +293,8 @@ SoDir
 
 }
 
+#########################################################
+
 makeitsingle() {
 
 SoDir
@@ -297,12 +312,7 @@ SoDir
 
 }
 
-
-
-
-
-
-
+#########################################################
 
 advanced() {
 	advancedopt=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Force JIT" False "Make Clean" False "Make [Force Single Core]" True "Back to Main Menu"`
@@ -315,15 +325,7 @@ advanced() {
 		esac
 }
 
-
-
-
-
-
-
-
-
-
+#########################################################
 
 # Check to see if JIT if forced. If not, Force.
 jit() {
@@ -331,12 +333,15 @@ jit() {
 advanced
 }
 
+#########################################################
+
 cleardevice() {
 	SoDir 
 	export device=0
 	mainmenu
 }
 
+#########################################################
 
 makeclean() {
 	SoDir
@@ -344,6 +349,7 @@ makeclean() {
 	mainmenu
 }
 
+#########################################################
 
 mainmenu() {
 	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" True "Download/Update Source" False "Setup Device Configuration" False "Clear Device Configuration" False "Build" False "Advanced Functions" False "Exit"`
