@@ -71,7 +71,7 @@ checkverjava() {
 
 	if [ $VERSION = $REQUIRED_VERSION ]
 		then
-		echo "Required version of Java found."
+		echo "Required version of Java detected."
 	else
 		installjava
 	fi
@@ -85,7 +85,7 @@ checkubuntu() {
 	source /etc/lsb-release
 	currentubu=10.04
 	if [ $currentubu -ge $DISTRIB_RELEASE ]; then
-		zenity --title "Cyanogen Builder ${VERSION}" --text "The script has found that you are running Ubuntu 10.04 or higher. Press OK to add the lucid repository required to install Java6." --info
+		zenity --title "CMBuilder ${VERSION}" --text "The script has detected that you are running Ubuntu 10.04 or higher. Press OK to add the lucid repository required to install Java6." --info
 		sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
 		sudo apt-get update
 fi
@@ -107,7 +107,7 @@ checkrepo() {
 		then
 		echo "Repo already installed."
 	else
-		echo "Repo not found!"
+		echo "Repo not detected!"
 		echo ""
 		echo "Installing Repo..."
 		echo "Please wait..."
@@ -182,7 +182,7 @@ required() {
 		echo "Checking what version you have."
 		checkverjava
 	else
-		echo "Java not found."
+		echo "Java not detected."
 		installjava
 	fi
 
@@ -201,7 +201,7 @@ DownS() {
 		echo "Source directory empty."
 		repo init -u git://github.com/CyanogenMod/android.git -b froyo
 	else
-		echo "Preexisting Source found. Ready to sync."
+		echo "Preexisting Source detected. Ready to sync."
 	fi
 
 	
@@ -210,9 +210,9 @@ DownS() {
 	SoDir
 if [ -e vendor/cyanogen/proprietary/RomManager.apk ]
 	then
-	echo "RomManager found."
+	echo "RomManager detected."
 	else
-	echo "RomManager not found."
+	echo "RomManager not detected."
 	echo "Downloading RomManager..."
 	cd $PWDD/Source/vendor/cyanogen
 	./get-rommanager
@@ -231,6 +231,7 @@ checkdevice() {
 		sleep 1
 	elif [ `adb shell | wc -w` -eq 4  ] || [ `adb devices| wc -w` -lt 6 ]
 		then
+	zenity --title "CMBuilder ${VERSION}" --text "The script has detected that your phone it not attached./nPlease attach your phone and then press ok." --info 
 		echo "Device NOT attatched"
 		sleep 1
 		DEVICEATTATCHED=0
@@ -261,7 +262,7 @@ startextract() {
 
 #Grab and setup device
 device() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Incredible" False "Hero" False "Bravo" False "Espresso" False "Droid"`
+	device=`zenity --title "CMBuilder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of CMBuilder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Incredible" False "Hero" False "Bravo" False "Espresso" False "Droid"`
 	case $device in
 		
 	 	"Dream/Sapphire")cyan-dream;;
@@ -320,7 +321,7 @@ SoDir
 #########################################################
 
 advanced() {
-	advancedopt=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Force JIT" False "Make Clean" False "Make [Force Single Core]" True "Back to Main Menu"`
+	advancedopt=`zenity --title "CMBuilder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Force JIT" False "Make Clean" False "Make [Force Single Core]" True "Back to Main Menu"`
 		case $advancedopt in
 			"Force JIT")jit;;
 			"Make Clean")makeclean;;
@@ -350,7 +351,7 @@ makeclean() {
 #########################################################
 
 mainmenu() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" True "Download/Update Source" False "Setup Device Configuration" False "Build" False "Advanced Functions" False "Exit"`
+	device=`zenity --title "CMBuilder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of CMBuilder! ***\n\nPlease select from the following list of actions." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An Option" False "Setup required files" True "Download/Update Source" False "Setup Device Configuration" False "Build" False "Advanced Functions" False "Exit"`
 		case $device in
 		 	"Setup required files")required;;
 		 	"Download/Update Source")DownS;;
