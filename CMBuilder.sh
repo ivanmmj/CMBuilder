@@ -244,11 +244,16 @@ startextract() {
 
 #Grab and setup device
 device() {
-	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Droid"`
+	device=`zenity --title "Cyanogen Builder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of Cyanogen Builder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Incredible" False "Hero" False "Bravo" False "Espresso" False "Droid"`
 	case $device in
-	 	"Dream/Sapphire")dream;;
-	 	"Nexus One")N1;;
-	 	"Droid")Droid;;
+		
+	 	"Dream/Sapphire")cyan-dream;;
+		"Incredible")cyan-inc;;
+		"Hero")cyan-hero;;
+	 	"Nexus One")cyan-n1;;
+		"Bravo")cyan-bravo;;
+		"Espresso")cyan-espresso;;
+	 	"Droid")cyan-droid;;
 	esac
 }
 
@@ -309,7 +314,6 @@ advanced() {
 		case $advancedopt in
 			"Force JIT")jit;;
 			"Make Clean")makeclean;;
-			"Clear device configuration")cleardevice;;
 			"Back to Main Menu")mainmenu;;
 			"Make [Force Single Core]")makeitsingle;;
 		esac
@@ -331,11 +335,7 @@ jit() {
 advanced
 }
 
-cleardevice() {
-	SoDir 
-	export device=0
-	mainmenu
-}
+
 
 
 makeclean() {
@@ -351,7 +351,6 @@ mainmenu() {
 		 	"Setup required files")required;;
 		 	"Download/Update Source")DownS;;
 			"Setup Device Configuration")device;;
-			"Clear Device Configuration")cleardevice;;
 		 	"Build")makeit;;
 			"Advanced Functions")advanced;;
 			"Exit")exit;;
