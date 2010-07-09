@@ -4,30 +4,29 @@ This document will outline the functions and order of the cyanogenmod builder sc
 
 I. Set up environment.
 
-if adb is found in ~/  <(user dir) then add it as a variable to use, otherwise wget or curl adb from server to keep the script as a one file script
+if adb is found in ~/  <(user dir) then add it as a variable to use, otherwise wget or curl adb from server to keep the script as a one file script - Done
 
-Bring down the "required" files to only the truly needed ones.
+Bring down the "required" files to only the truly needed ones. -Done
 
    Remove all unneeded Sudo - Done
 
 
 
 2. Download Source/Sync already downloaded Source
-sudo really isnt needed, as we are not changing any root owned files.
-        Remove all unneeded Sudo
+sudo really isnt needed, as we are not changing any root owned files. 
+        Remove all unneeded Sudo -Done
 Should we add multiple trees? Froyo, Eclair, Donut, etc? Is it worth it?
-Does anyone really want the older trees?
+Does anyone really want the older trees? - No
 
 
 
 
 3. Set up more devices?
-Set up more devices?
+Set up more devices? - Done
 Add JIT for each device?
 Or should we wait to see if Cyan will enable this automatically?
 
-Do we need to make our own buildspec.mk or is Lunch enough?
-    lunch should be find by itself.
+Maybe adb pull gapps then add them to the finished build?
 
 Add JIT for each device?
 
