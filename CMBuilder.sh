@@ -231,7 +231,7 @@ checkdevice() {
 		sleep 1
 	elif [ `adb shell | wc -w` -eq 4  ] || [ `adb devices| wc -w` -lt 6 ]
 		then
-	zenity --title "CMBuilder ${VERSION}" --text "The script has detected that your phone it not attached./nPlease attach your phone and then press ok." --info 
+	zenity --title "CMBuilder ${VERSION}" --text "The script has detected that your phone it not attached.\nPlease attach your phone and then press ok." --info 
 		echo "Device NOT attatched"
 		sleep 1
 		DEVICEATTATCHED=0
