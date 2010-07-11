@@ -16,6 +16,14 @@ export PATH=$PATH:~/bin
 PWDD=`pwd`
 
 # Set Function Sources
+if [ ! -d scripts ]
+	then
+	echo "cannot find scripts folder"
+fi
+if [ ! -e scripts/devicelunch ]
+	then
+	touch ./scripts/devicelunch
+fi
 if [ -e scripts/index.sh ]
 	then
 	source scripts/index.sh
