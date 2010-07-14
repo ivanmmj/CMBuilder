@@ -329,9 +329,9 @@ SoDir
 #########################################################
 
 advanced() {
-	advancedopt=`zenity --title "CMBuilder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Force JIT" False "Make Clean" False "Make [Force Single Core]" True "Back to Main Menu"`
+	advancedopt=`zenity --title "CMBuilder ${VERSION} by ivanmmj" --text "Advanced Menu" --height 380 --width 250 --list --radiolist --column "" --column "Please Select An Option" False "Optimize ROM" False "Make Clean" False "Make [Force Single Core]" True "Back to Main Menu"`
 		case $advancedopt in
-			"Force JIT")jit;;
+			"Optimize ROM")opti;;
 			"Make Clean")makeclean;;
 			"Back to Main Menu")mainmenu;;
 			"Make [Force Single Core]")makeitsingle;;
@@ -340,9 +340,11 @@ advanced() {
 
 #########################################################
 
-# Check to see if JIT if forced. If not, Force.
-jit() {
-
+# Optimize ROM.
+opti() {
+SoDir
+cd Source
+. vendor/cyanogen/tools/squisher
 advanced
 }
 
