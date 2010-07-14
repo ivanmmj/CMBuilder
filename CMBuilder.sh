@@ -270,7 +270,7 @@ startextract() {
 
 #Grab and setup device
 device() {
-	device=`zenity --title "CMBuilder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of CMBuilder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Incredible" False "Hero" False "Bravo" False "Espresso" False "Droid"`
+	device=`zenity --title "CMBuilder ${VERSION} by ivanmmj" --text "*** Welcome to ${VERSION} of CMBuilder! ***\n\n          Please select the device you which to build for." --height 380 --width 250 --list --radiolist --column "" --column "    Please Select An 	Option" False "Dream/Sapphire" False "Nexus One" False "Incredible" False "Hero" False "Bravo" False "Espresso" False "Droid" False "Supersonic"`
 	case $device in
 		
 	 	"Dream/Sapphire")cyan-dream;;
@@ -280,6 +280,7 @@ device() {
 		"Bravo")cyan-bravo;;
 		"Espresso")cyan-espresso;;
 	 	"Droid")cyan-droid;;
+		"Supersonic")cyan-supersonic;;
 	esac
 }
 

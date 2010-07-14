@@ -95,6 +95,14 @@ cyan-espresso() {
 	startextract
 }
 
+cyan-supersonic() {
+	SoDir
+	. build/envsetup.sh
+	lunch 12
+	echo lunch=12 > ../scripts/devicelunch
+	extract=device/htc/supersonic
+	startextract
+}
 
 
 ##THESE ARE NO LONGER IN LUNCH MENU
