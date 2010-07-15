@@ -75,6 +75,7 @@ cyan-dream() {
 	lunch 9
 	echo lunch=9 > ../scripts/devicelunch
 	extract=device/htc/dream_sapphire
+	open=out/target/product/dream_sapphire
 	startextract
 }
 
