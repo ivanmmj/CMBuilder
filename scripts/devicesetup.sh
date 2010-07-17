@@ -66,6 +66,7 @@ cyan-droid() {
 	lunch 8
 	echo lunch=8 > ../scripts/devicelunch
 	extract=device/motorola/sholes
+	open=out/target/product/sholes
 	startextract
 }
 
