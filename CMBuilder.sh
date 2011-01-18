@@ -7,7 +7,7 @@
 # ivanmmj of xda-developers.com
 # jamezelle of xda-developers.com
 
-VERSION="v2.1-alpha"
+VERSION="v2.2-alpha"
 
 # Export to PATH
 export PATH=$PATH:~/bin
@@ -94,7 +94,7 @@ checkubuntu() {
 	currentubu=10.04
 	if [ $currentubu -ge $DISTRIB_RELEASE ]; then
 		zenity --title "CMBuilder ${VERSION}" --text "The script has detected that you are running Ubuntu 10.04 or higher. Press OK to add the lucid repository required to install Java6." --info
-		sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
+		sudo add-apt-repository ppa:sun-java-community-team/sun-java6
 		sudo apt-get update
 fi
 }
