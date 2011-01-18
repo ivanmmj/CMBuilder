@@ -104,7 +104,7 @@ fi
 # Install Java
 installjava() {
 	checkubuntu
-	sudo apt-get install sun-java6-jdk
+	sudo apt-get -y install sun-java6-jdk
 }
 
 #########################################################
@@ -169,14 +169,14 @@ required() {
 	checkadb
 	checkrepo	
 # Install all required "32-bit system" files.
-	sudo apt-get install git-core gnupg flex bison gperf libsdl-dev libesd0-dev libwxgtk2.6-dev build-essential zip curl libncurses5-dev zlib1g-dev
+	sudo apt-get -y install git-core gnupg flex bison gperf libsdl-dev libesd0-dev libwxgtk2.6-dev build-essential zip curl libncurses5-dev zlib1g-dev
 
 # Check to see if you have "64-bit system" and installed required files.
 	bit=`getconf LONG_BIT`
 	if [ $bit = 64 ]; then
 		echo "64bit OS installed."
 		echo "Installing required files..."
-		sudo apt-get install ia32-libs  g++-multilib gcc-multilib lib32z1-dev lib32ncurses5-dev libc6-dev-i386 x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev
+		sudo apt-get -y install ia32-libs  g++-multilib gcc-multilib lib32z1-dev lib32ncurses5-dev libc6-dev-i386 x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev
 	else
 		echo "32bit OS installed."
 		echo "Nothing else is required."
