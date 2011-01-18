@@ -207,7 +207,7 @@ DownS() {
 	if [ $(ls -1A | wc -l) -eq 0 ]
 		then
 		echo "Source directory empty."
-		repo init -u git://github.com/CyanogenMod/android.git -b froyo
+		repo init -u git://github.com/CyanogenMod/android.git -b gingerbread
 	else
 		echo "Preexisting Source detected. Ready to sync."
 	fi
