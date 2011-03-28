@@ -1,176 +1,59 @@
-# 32b Devices Setup
-genericeng() {
+cyan_ace() {
 	SoDir
+	cp ./vendor/cyanogen/products/cyanogen_ace.mk ./buildspec.mk	
 	. build/envsetup.sh
-	lunch 1
-	echo lunch=1  > ../scripts/devicelunch
-}
-
-simulator() {
-	SoDir
-	. build/envsetup.sh
-	lunch 2
-	echo lunch=2  > ../scripts/devicelunch
-}
-
-generic_inc_usr-dbg() {
-	SoDir
-	. build/envsetup.sh
-	lunch 3
-	echo lunch=3  > ../scripts/devicelunch
-	extract=device/htc/inc
+	lunch 50
+	echo lunch=50  > ../scripts/device
+	extract=device/htc/ace
 	startextract
 }
 
-generic-sholes-usr-dbg() {
-	 SoDir
-	. build/envsetup.sh
-	lunch 4
-	echo lunch=4 > ../scripts/devicelunch
-	extract=device/motorola/sholes
-	startextract
-}
-
-# N1 Devices Setup
-cyan-n1() {
+cyan_bravo() {
 	SoDir
+	cp ./vendor/cyanogen/products/cyanogen_bravo.mk ./buildspec.mk	
 	. build/envsetup.sh
-	lunch 5
-	echo lunch=5 > ../scripts/devicelunch
-	extract=device/htc/passion
-	startextract
-}
-
-cyan-inc() {
-	SoDir
-	. build/envsetup.sh
-	lunch 6
-	echo lunch=6 > ../scripts/devicelunch
-	extract=device/htc/inc
-	startextract
-}
-
-cyan-hero() {
-	SoDir
-	. build/envsetup.sh
-	lunch 7
-	echo lunch=7 > ../scripts/devicelunch
-	extract=device/htc/hero
-	startextract
-}
-
-# Droid Devices Setup
-cyan-droid() {
-	SoDir
-	. build/envsetup.sh
-	lunch 8
-	echo lunch=8 > ../scripts/devicelunch
-	extract=device/motorola/sholes
-	open=out/target/product/sholes
-	startextract
-}
-
-cyan-dream() {
-	SoDir
-	. build/envsetup.sh
-	lunch 9
-	echo lunch=9 > ../scripts/devicelunch
-	extract=device/htc/dream_sapphire
-	open=out/target/product/dream_sapphire
-	startextract
-}
-
-cyan-bravo() {
-	SoDir
-	. build/envsetup.sh
-	lunch 10
-	echo lunch=10 > ../scripts/devicelunch
+	lunch 52
+	echo lunch=52  > ../scripts/device
 	extract=device/htc/bravo
 	startextract
 }
-cyan-espresso() {
+
+cyan_bravoc() {
 	SoDir
+	cp ./vendor/cyanogen/products/cyanogen_bravoc.mk ./buildspec.mk	
 	. build/envsetup.sh
-	lunch 11
-	echo lunch=11 > ../scripts/devicelunch
-	extract=device/htc/espresso
+	lunch 53
+	echo lunch=53  > ../scripts/device
+	extract=device/htc/bravoc
 	startextract
 }
 
-cyan-supersonic() {
+cyan_buzz() {
 	SoDir
+	cp ./vendor/cyanogen/products/cyanogen_buzz.mk ./buildspec.mk	
 	. build/envsetup.sh
-	lunch 12
-	echo lunch=12 > ../scripts/devicelunch
-	extract=device/htc/supersonic
+	lunch 54
+	echo lunch=54  > ../scripts/device
+	extract=device/htc/buzz
 	startextract
 }
 
+cyan_blade() {
+	SoDir
+	cp ./vendor/cyanogen/products/cyanogen_blade.mk ./buildspec.mk	
+	. build/envsetup.sh
+	lunch 51
+	echo lunch=51  > ../scripts/device
+	extract=device/zte/blade
+	startextract
+}
 
-##THESE ARE NO LONGER IN LUNCH MENU
-# bravo-eng() {
-# 	SoDir
-# 	. build/envsetup.sh
-# 	lunch 3
-# 	echo lunch=3  > ../scripts/devicelunch
-# 	extract=device/htc/bravo
-# 	startextract
-# }
-# bravo-usr-dbg() {
-# 	SoDir
-# 	. build/envsetup.sh
-# 	lunch 4
-# 	echo lunch=4  > ../scripts/devicelunch
-# 	extract=device/htc/bravo
-# 	startextract
-# }
-# 
-# full-dream() {
-# 	SoDir
-# 	. build/envsetup.sh
-# 	lunch 5
-# 	echo lunch=5  > ../scripts/devicelunch
-# 	extract=device/htc/dream_sapphire
-# 	startextract
-# }
-# 
-# generic-espresso-usr-dbg() {
-# 	SoDir
-# 	. build/envsetup.sh
-# 	lunch 6
-# 	echo lunch=6  > ../scripts/devicelunch
-# 	extract=device/htc/espresso
-# 	startextract
-# }
-# 
-# full-hero-usr-dbg() {
-# 	SoDir
-# 	. build/envsetup.sh
-# 	lunch 7
-# 	echo lunch=7  > ../scripts/devicelunch
-# 	extract=device/htc/hero
-# 	startextract
-# }
-# 
-# generic-sholes-usr-dbg() {
-# 	 SoDir
-# 	. build/envsetup.sh
-# 	lunch 10
-# 	echo lunch=10 > ../scripts/devicelunch
-# 	extract=device/motorola/sholes
-# 	startextract
-# }
-# 
-# full-passion-usr-dbg() {
-# 	SoDir
-# 	. build/envsetup.sh
-# 	lunch 9
-# 	echo lunch=9  > ../scripts/devicelunch
-# 	extract=device/htc/passion
-# 	startextract
-# }
-# 
-
-
-
-
+cyan_crespo() {
+	SoDir
+	cp ./vendor/cyanogen/products/cyanogen_crespo.mk ./buildspec.mk	
+	. build/envsetup.sh
+	lunch 55
+	echo lunch=55  > ../scripts/device
+	extract=device/bn/encore
+	startextract
+}

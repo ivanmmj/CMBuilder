@@ -20,9 +20,9 @@ if [ ! -d scripts ]
 	then
 	echo "cannot find scripts folder"
 fi
-if [ ! -e scripts/devicelunch ]
+if [ ! -e scripts/device ]
 	then
-	touch ./scripts/devicelunch
+	touch ./scripts/device
 fi
 if [ -e scripts/index.sh ]
 	then
