@@ -1,1 +1,4 @@
-this is a very pre pre alpha, bash gui to build CM(cyanogenmod, which is a modified android source project dedicated for multiple devices)
+This is a very pre alpha, bash/gui to build CM7. CM7 (cyanogenmod) is a modified android source project.
+To build, just run the following command on Ubuntu:
+./CMBuilder.sh
+
