@@ -322,7 +322,7 @@ SoDir
 	lunch $lunch
 
 #Make (into a zip)
-	make bacon | zenity --progress --pulsate --auto-close --width=500 --title="Compiling...";
+	make -j`grep 'processor' /proc/cpuinfo | wc -l` otapackage
 	mainmenu
 
 }
