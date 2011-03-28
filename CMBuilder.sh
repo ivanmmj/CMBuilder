@@ -7,7 +7,7 @@
 # ivanmmj of xda-developers.com
 # jamezelle of xda-developers.com
 
-VERSION="v2.2-alpha"
+VERSION="v3-alpha"
 
 # Export to PATH
 export PATH=$PATH:~/bin
@@ -214,7 +214,7 @@ DownS() {
 
 	
 #Sync with Cyanogen's github.
-	repo sync
+	repo sync -j4
 	SoDir
 if [ -e vendor/cyanogen/proprietary/RomManager.apk ]
 	then
